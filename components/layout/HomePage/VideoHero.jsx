@@ -122,7 +122,7 @@ const scale = useTransform(
           <motion.div style={{ scale, opacity }} className="relative w-full max-w-6xl will-change-transform">
             <motion.div
               style={{ borderRadius }}
-              className="relative overflow-hidden bg-[#384F37] shadow-2xl border-4 border-[#FF7A00]/20"
+              className="relative overflow-hidden bg-[#384F37] border-4 border-[#FF7A00]/20"
             >
               <div className="aspect-video relative">
                 <video

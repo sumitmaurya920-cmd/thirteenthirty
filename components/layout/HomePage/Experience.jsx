@@ -102,7 +102,7 @@ export default function Experience() {
         </motion.div>
 
         {/* Stats */}
-        <div className="mb-24 grid grid-cols-2 gap-8 lg:grid-cols-4 lg:gap-12">
+        <div className="mb-24 grid grid-cols-2 gap-8 lg:grid-cols-4 lg:gap-12 ">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
@@ -115,7 +115,7 @@ export default function Experience() {
                 ease: [0.22, 1, 0.36, 1],
               }}
               whileHover={{ scale: 1.05, y: -10 }}
-              className="group relative overflow-hidden border-2 border-[#FF7A00]/20 bg-white/5 p-8 text-center backdrop-blur-sm"
+              className="group relative overflow-hidden border-2 border-[#FF7A00]/20 bg-white/5 p-8 text-center backdrop-blur-sm rounded-[20px]"
             >
               <motion.div
                 initial={{ x: "-100%" }}

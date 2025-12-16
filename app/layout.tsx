@@ -27,7 +27,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="text-white" suppressHydrationWarning>
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300..700;1,300..700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="text-white">
         <PreloaderWrapper>
           <Header />
           {children}

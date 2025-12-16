@@ -19,9 +19,9 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-[#384F37] border-t-2 border-[#FF7A00]/20 py-16 overflow-hidden">
+    <footer className="footer-gradient relative border-t-2 border-[#FF7A00]/20 py-16 overflow-hidden">
       {/* Animated background */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden footer-text">
         {[...Array(5)].map((_, i) => (
           <motion.div
             key={i}
@@ -45,7 +45,7 @@ export default function Footer() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-3xl tracking-[0.3em] text-white mb-6 relative inline-block"
+              className="text-3xl tracking-[0.3em] footer-title mb-6 relative inline-block"
             >
               <img
                 id=""
@@ -60,7 +60,7 @@ export default function Footer() {
               />
             </motion.h3>
 
-            <p className="text-white/70 mb-8 leading-relaxed max-w-md">
+            <p className="footer-text mb-8 leading-relaxed max-w-md">
               Crafting timeless furniture masterpieces since 1975. Where luxury
               meets sustainability, and design transcends trends.
             </p>
@@ -73,9 +73,9 @@ export default function Footer() {
                     key={index}
                     href={social.href}
                     whileHover={{ y: -5, scale: 1.1, rotate: 360 }}
-                    className="relative w-10 h-10 bg-white/5 border-2 border-[#FF7A00]/30 rounded-full flex items-center justify-center group"
+                    className="relative w-10 h-10 bg-green border-2 border-[#FF7A00]/30 rounded-full flex items-center justify-center group"
                   >
-                    <Icon className="w-5 h-5 text-white/70 group-hover:text-white transition-colors" />
+                    <Icon className="w-5 h-5 group-hover:text-white transition-colors" />
                     <motion.div
                       animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
                       transition={{
@@ -99,7 +99,7 @@ export default function Footer() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h4 className="text-white mb-6 tracking-wider relative inline-block">
+              <h4 className="footer-title mb-6 tracking-wider relative inline-block">
                 {category}
                 <span className="absolute -bottom-1 left-0 h-0.5 w-1/2 bg-[#FF7A00]" />
               </h4>
@@ -109,7 +109,7 @@ export default function Footer() {
                   <li key={index}>
                     <a
                       href="#"
-                      className="text-white/60 hover:text-[#FF7A00] transition-colors text-sm"
+                      className="footer-accent hover:text-[#FF7A00] transition-colors text-sm"
                     >
                       {item}
                     </a>
@@ -121,7 +121,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t-2 border-[#FF7A00]/20 flex flex-col md:flex-row justify-between items-center text-white/60 text-sm">
+        <div className="pt-8 border-t-2 border-[#FF7A00]/20 flex flex-col md:flex-row justify-between items-center footer-site-credit text-sm">
           <p>© 2025 ThirteenThirty All rights reserved.</p>
           <p className="flex items-center gap-2">
             ✦ Handcrafted with precision and passion ✦

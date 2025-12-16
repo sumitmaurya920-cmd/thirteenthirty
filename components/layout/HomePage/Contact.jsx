@@ -125,7 +125,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="p-8 lg:p-12 bg-white/5 backdrop-blur-sm border border-white/10"
+            className="p-8 lg:p-12 bg-white/5 backdrop-blur-sm border border-white/10 rounded-[20px]"
           >
             <h3 className="text-3xl text-white mb-8">
               Schedule a Consultation
@@ -147,7 +147,7 @@ export default function Contact() {
                           ? "rgba(255,122,0,0.8)"
                           : "rgba(255,255,255,0.2)",
                     }}
-                    className="w-full px-4 py-4 bg-white/5 border text-white outline-none"
+                    className="w-full px-4 py-4 bg-white/5 border text-white outline-none rounded-[15px]"
                   />
                 </div>
               ))}
