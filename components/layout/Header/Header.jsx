@@ -113,52 +113,58 @@ export default function Navigation() {
       }`}
     >
       {/* -------- TOP BAR -------- */}
-      <div className="max-w-[1600px] mx-auto px-6 lg:px-12"> 
-        <div className="flex items-center justify-between h-15">
-          {/* LOGO */}
-          <img
-                id=""
+      <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-3 items-center content-center h-15">
+
+            {/* LEFT – DESKTOP MENU */}
+            <div className="hidden lg:flex items-center space-x-12 justify-start">
+              {menuItems.map((item) => (
+                <div
+                  key={item}
+                  onMouseEnter={() => onEnter(item)}
+                  className="relative"
+                >
+                  <a className="flex items-center gap-1 text-white/80 hover:text-white text-sm tracking-wider cursor-pointer">
+                    {item.toUpperCase()}
+                    {megaMenuData[item] && (
+                      <ChevronDown
+                        className={`w-4 h-4 transition ${
+                          activeMegaMenu === item ? "rotate-180" : ""
+                        }`}
+                      />
+                    )}
+                  </a>
+                </div>
+              ))}
+            </div>
+
+            {/* CENTER – LOGO */}
+            <div className="flex justify-center">
+              <img
                 src="/tt_logo.png"
                 alt="logo"
                 className="w-[70px]"
               />
+            </div>
 
-          {/* DESKTOP MENU */}
-          <div className="hidden lg:flex space-x-16">
-            {menuItems.map((item) => (
-              <div
-                key={item}
-                onMouseEnter={() => onEnter(item)}
-                className="relative"
-              >
-                <a className="flex items-center gap-1 text-white/80 hover:text-white text-sm tracking-wider cursor-pointer">
-                  {item.toUpperCase()}
-                  {megaMenuData[item] && (
-                    <ChevronDown
-                      className={`w-4 h-4 transition ${
-                        activeMegaMenu === item ? "rotate-180" : ""
-                      }`}
-                    />
-                  )}
-                </a>
+            {/* RIGHT – SEARCH + MOBILE */}
+            <div className="flex items-center justify-end gap-6">
+              <div className="hidden lg:flex">
+                <Search className="w-5 h-5 text-white hover:text-[#FF7A00] transition-colors" />
               </div>
-            ))}
-          </div>
 
-          {/* CART */}
-          <div className="hidden lg:flex">
-            <Search className="w-5 h-5 text-white hover:text-[#FF7A00] transition-colors" />
-          </div>
+              {/* MOBILE MENU BUTTON */}
+              <button
+                onClick={() => setIsMenuOpen((v) => !v)}
+                className="lg:hidden text-white"
+              >
+                {isMenuOpen ? <X /> : <Menu />}
+              </button>
+            </div>
 
-          {/* MOBILE BTN */}
-          <button
-            onClick={() => setIsMenuOpen((v) => !v)}
-            className="lg:hidden text-white"
-          >
-            {isMenuOpen ? <X /> : <Menu />}
-          </button>
+          </div>
         </div>
-      </div>
+
 
       {/* -------- MEGA MENU -------- */}
       <AnimatePresence>
@@ -169,7 +175,7 @@ export default function Navigation() {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4 }}
             onMouseEnter={() => closeTimeout && clearTimeout(closeTimeout)}
-            className="max-w-[1100px] mx-auto absolute left-0 right-0 top-full bg-[#384F37]/98 border-b border-[#FF7A00]/30"
+            className="max-w-[1600px] mx-auto absolute left-0 right-0 top-full bg-[#384F37]/98 border-b border-[#FF7A00]/30"
           >
             <div className="max-w-[1200px] mx-auto px-12 py-12 grid grid-cols-4 gap-12 backdrop-blur-md">
               {/* COLUMNS */}

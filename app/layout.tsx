@@ -29,7 +29,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link
-          href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300..700;1,300..700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Libertinus+Math&display=swap"
           rel="stylesheet"
         />
       </head>
