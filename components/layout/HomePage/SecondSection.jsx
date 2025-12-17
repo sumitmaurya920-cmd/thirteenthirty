@@ -52,7 +52,7 @@ export default function FantaPage() {
           left: "44%",
           scale: 1.1,
           width: "12%",
-        //   rotation: 360,
+          //   rotation: 360,
         },
         "chair-final"
       );
@@ -64,50 +64,51 @@ export default function FantaPage() {
   }, []);
 
   const sectionThreeRef = useRef(null);
-  
+
   useEffect(() => {
-  if (!sectionThreeRef.current) return;
+    if (!sectionThreeRef.current) return;
 
-  const resetCards = () => {
-    gsap.to(".card-left", { x: 0, opacity: 0, duration: 0.4 });
-    gsap.to(".card-right", { x: 0, opacity: 0, duration: 0.4 });
-    gsap.set(".card-center", { zIndex: 0, opacity: 1 });
-  };
+    const resetCards = () => {
+      gsap.to(".card-left", { x: 0, opacity: 0, duration: 0.4 });
+      gsap.to(".card-right", { x: 0, opacity: 0, duration: 0.4 });
+      gsap.set(".card-center", { zIndex: 0, opacity: 1 });
+    };
 
-  resetCards();
+    resetCards();
 
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
-        gsap.to(".card-left", {
-          x: "-28vw",
-          opacity: 1,
-          duration: 0.6,
-          ease: "power3.out",
-        });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+          gsap.to(".card-left", {
+            x: "-28vw",
+            opacity: 1,
+            duration: 0.6,
+            ease: "power3.out",
+          });
 
-        gsap.to(".card-right", {
-          x: "28vw",
-          opacity: 1,
-          duration: 0.6,
-          ease: "power3.out",
-        });
-      } else {
-        resetCards();
-      }
-    },
-    { threshold: 0.5 }
-  );
+          gsap.to(".card-right", {
+            x: "28vw",
+            opacity: 1,
+            duration: 0.6,
+            ease: "power3.out",
+          });
+        } else {
+          resetCards();
+        }
+      },
+      { threshold: 0.5 }
+    );
 
-  observer.observe(sectionThreeRef.current);
-  return () => observer.disconnect();
-}, []);
+    observer.observe(sectionThreeRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div id="main" className="w-full text-[#3a3027] ">
-      
+
       {/* SECTION ONE – HERO WITH CHAIR */}
       <section className="section-one relative flex h-screen w-full items-center justify-center">
+       
         {/* Background line top (optional) */}
         {/* <div className="absolute top-[12vh] left-0 right-0 mx-[6vw] h-px bg-[#3a3027]/40" /> */}
 
@@ -130,7 +131,7 @@ export default function FantaPage() {
         {/* Center + left images (dummy blocks like reference) */}
         <div className="absolute left-[6vw] flex w-[40vw] gap-[2vw]">
           <div className="flex-1 flex flex-col gap-4">
-            
+
             <p className="h-px w-full bg-[#3a3027]/40" />
             <p className="text-[0.8vw] leading-relaxed">
               Part chair, part work of craft art. This layout is just dummy
@@ -138,7 +139,7 @@ export default function FantaPage() {
             </p>
           </div>
 
-          <div className="flex-1 flex flex-col gap-4">                
+          <div className="flex-1 flex flex-col gap-4">
           </div>
         </div>
 
@@ -161,7 +162,7 @@ export default function FantaPage() {
             Real images can be wired later once client gives final content.
           </p> */}
         </div>
-        
+
 
         {/* RIGHT */}
         <div className="flex h-full w-1/2 flex-col items-start justify-center gap-[3vh] pl-[8vw] pr-[4vw]">
@@ -179,67 +180,74 @@ export default function FantaPage() {
         </div>
       </section>
 
+
       {/* SECTION THREE – SIMPLE CARDS */}
       <section ref={sectionThreeRef} className="section-three relative flex h-screen w-full items-center justify-center ">
         <div className="relative h-[65vh] w-[80vw]">
 
-        {/* Card 1 */}
-        <div className="card card-left absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-          <div className="img-box w-full aspect-[4/3] rounded-[20px] relative">
-            <Image
-                              src="/Arc-1.png"      // <- your image path
-                              alt="Chair"
-                              fill
-                              className="object-cover"
-                            />
-          </div> 
-          <div>
-            <h3 className="mt-6 text-[1.5vw]">Lounge Chair 01</h3>
-            <p className="mt-2 text-[0.85vw] text-[#3a3027]/80">
-              A relaxed lounge chair with soft edges and warm upholstery.
-            </p>
+          {/* Card 1 */}
+          <div className="card card-left absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div className="img-box w-full aspect-[4/3] rounded-[20px] relative">
+              <Image
+                src="/Arc-1.png"      // <- your image path
+                alt="Chair"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div>
+              <h3 className="mt-6 text-[1.5vw]">Lounge Chair 01</h3>
+              <p className="mt-2 text-[0.85vw] text-[#3a3027]/80">
+                A relaxed lounge chair with soft edges and warm upholstery.
+              </p>
+            </div>
+            <button className="mt-4 rounded-full bg-[#384F37] px-[20px] py-[10px] text-[0.85vw] text-[#fff]">
+              View details
+            </button>
           </div>
-          <button className="mt-4 rounded-full bg-[#384F37] px-[20px] py-[10px] text-[0.85vw] text-[#fff]">
-            View details
-          </button>
-        </div>
 
-        {/* Card 2 */}
-        <div className="card card-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-          <div className="w-full aspect-[4/3] rounded-[20px]" />
-          <div>
-            <h3 className="mt-6 text-[1.5vw]">Reading Chair</h3>
-            <p className="mt-2 text-[0.85vw] text-[#3a3027]/80">
-              Designed for long evenings with a book, calm and supportive.
-            </p>
+          {/* Card 2 */}
+          <div className="card card-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div className="w-full aspect-[4/3] rounded-[20px]" />
+            <div>
+              <h3 className="mt-6 text-[1.5vw]">Reading Chair</h3>
+              <p className="mt-2 text-[0.85vw] text-[#3a3027]/80">
+                Designed for long evenings with a book, calm and supportive.
+              </p>
+            </div>
+            <button className="mt-4 rounded-full bg-[#384F37] px-[20px] py-[10px] text-[0.85vw] text-[#fff]">
+              View details
+            </button>
           </div>
-          <button className="mt-4 rounded-full bg-[#384F37] px-[20px] py-[10px] text-[0.85vw] text-[#fff]">
-            View details
-          </button>
-        </div>
 
-        {/* Card 3 */}
-        <div className="card card-right absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-          <div className="w-full aspect-[4/3] rounded-[20px] relative">
-            <Image
-                              src="/Orbit-1.png"      // <- your image path
-                              alt="Chair"
-                              fill
-                              className="object-cover"
-                            />
-          </div> 
-          <div>
-            <h3 className="mt-6 text-[1.5vw]">Accent Chair</h3>
-            <p className="mt-2 text-[0.85vw] text-[#3a3027]/80">
-              A sculptural accent piece to anchor living spaces.
-            </p>
+          {/* Card 3 */}
+          <div className="card card-right absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div className="w-full aspect-[4/3] rounded-[20px] relative">
+              <Image
+                src="/Orbit-1.png"      // <- your image path
+                alt="Chair"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div>
+              <h3 className="mt-6 text-[1.5vw]">Accent Chair</h3>
+              <p className="mt-2 text-[0.85vw] text-[#3a3027]/80">
+                A sculptural accent piece to anchor living spaces.
+              </p>
+            </div>
+            <button className="mt-4 rounded-full bg-[#384F37] px-[20px] py-[10px] text-[0.85vw] text-[#fff]">
+              View details
+            </button>
           </div>
-          <button className="mt-4 rounded-full bg-[#384F37] px-[20px] py-[10px] text-[0.85vw] text-[#fff]">
-            View details
-          </button>
-        </div>
         </div>
       </section>
+
+       <div className="manufacturing-unit">
+          <img id="assembly-unit"
+            src="/Assembly-unit.png"
+            alt="Assembly Unit"></img>
+        </div>
     </div>
   );
 }
