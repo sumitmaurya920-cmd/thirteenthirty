@@ -439,15 +439,15 @@ nav {
   /* background: linear-gradient(#f6f4ef 0%, #eef2ee 35%, #e4ebe6 65%, #d8e0da 100%); */
   background-color: #F6F6F6;
   overflow: hidden ;
-  filter: grayscale(100%);
+  /* filter: grayscale(100%); */
 }
 
-.categ-box:hover {
+/* .categ-box:hover {
   filter: grayscale(0%);
-}
+} */
 
 .view-all-btn {
-    border: 1px solid #296a53;
+    border: 1px solid #296a54;
     padding: 10px;
     border-radius: 100%;
     cursor: pointer !important;
@@ -459,13 +459,12 @@ nav {
 .categ-img {
     right: -40px;
     bottom: -15px;
-    transform: rotate(-20deg);
     transition: all 0.5s ease;
 }
-
-.categ-box:hover .categ-img {
-    transform: none;
+.categ-txt-box h3{
+    color: #296a53;
 }
+
 
 /* img scroll css */
 
@@ -480,14 +479,14 @@ nav {
 
 .image {
   height: 100%;
-  width: 61%;
+  width: 100%;
   background-image: url("../public/Assembly-unit.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  will-change: transform;
-  border-radius: 20px;
-  width: 61%;
+  background-attachment: fixed;
+  /* will-change: transform; */
+  width: 100%;
   height: 100%;
   max-height: 650px;
 }

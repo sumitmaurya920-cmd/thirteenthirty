@@ -1,86 +1,132 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { ChevronDown } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
-const categories = [
-  { title: "Chairs", count: 23, img: "/categories/chair.png" },
-  { title: "Sofa", count: 18, img: "/categories/sofa-set.png" },
-  { title: "Tables", count: 12, img: "/categories/table.png" },
-  { title: "Bench", count: 15, img: "/categories/bench.png" },
-  { title: "Lounges", count: 30, img: "/categories/LOUNGES.png" },
-  { title: "Seating", count: 10, img: "/categories/seating.png" },
+/* ---------------- FILTER TABS ---------------- */
 
-  // hidden initially
-  { title: "Outdoor", count: 9, img: "/categories/outdoor.png" },
-  { title: "Storage", count: 14, img: "/categories/storage.png" },
-  { title: "Decor", count: 21, img: "/categories/decor.png" },
+const filters = ["All", "Sofa", "Chair", "Table", "Lamp", "Accessories"];
+
+/* ---------------- PRODUCTS DATA ---------------- */
+
+const products = [
+  { title: "Chairs", type: "Chair", count: 23, img: "/categories/chair.png" },
+  { title: "Sofa", type: "Sofa", count: 18, img: "/categories/sofa-set.png" },
+  { title: "Tables", type: "Table", count: 12, img: "/categories/table.png" },
+  { title: "Bench", type: "Chair", count: 15, img: "/categories/bench.png" },
+  { title: "Lounges", type: "Chair", count: 30, img: "/categories/LOUNGES.png" },
+  { title: "Seating", type: "Chair", count: 10, img: "/categories/seating.png" },
+  { title: "Sofa XL", type: "Sofa", count: 14, img: "/categories/sofa-set.png" },
+  { title: "Dining Table", type: "Table", count: 9, img: "/categories/table.png" },
+
+  { title: "Accent Chair", type: "Chair", count: 11, img: "/categories/chair.png" },
+  { title: "Coffee Table", type: "Table", count: 6, img: "/categories/table.png" },
+  { title: "Lamp Stand", type: "Lamp", count: 7, img: "/categories/light.png" },
+  { title: "Decor Set", type: "Accessories", count: 19, img: "/categories/accessories.png" },
 ];
+
+/* ---------------- COMPONENT ---------------- */
 
 export default function BrowseCategories() {
   const [expanded, setExpanded] = useState(false);
+  const [activeFilter, setActiveFilter] = useState("All");
+
+  const filteredProducts = useMemo(() => {
+    if (activeFilter === "All") return products;
+    return products.filter((p) => p.type === activeFilter);
+  }, [activeFilter]);
+
+  const visibleItems = expanded
+    ? filteredProducts
+    : filteredProducts.slice(0, 8);
 
   return (
-    <section className="py-20">
-      <div className="max-w-4xl mx-auto px-6">
-        {/* Heading */}
-        <h2 className="text-3xl tracking-wide mb-10 text-black">
-          BROWSE BY CATEGORIES
-        </h2>
+    <section className="py-12">
+      <div className="max-w-8xl mx-auto px-6">
 
-        {/* Always visible grid (first 6) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {categories.slice(0, 6).map((cat, i) => (
-            <CategoryCard key={i} cat={cat} />
-          ))}
-        </div>
+        {/* ---------- HEADER ---------- */}
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-10 gap-6">
+          <h2 className="text-3xl tracking-wide text-black">
+            OUR PRODUCTS
+          </h2>
 
-        {/* Expandable wrapper */}
-        <div
-          className={`
-            overflow-hidden transition-all duration-[600ms] ease-[cubic-bezier(.22,1,.36,1)]
-            ${expanded ? "max-h-[1200px] opacity-100 mt-8" : "max-h-0 opacity-0"}
-          `}
-        >
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pt-2">
-            {categories.slice(6).map((cat, i) => (
-              <CategoryCard key={i} cat={cat} />
+          <div className="flex flex-wrap gap-3">
+            {filters.map((filter) => (
+              <button
+                key={filter}
+                onClick={() => {
+                  setActiveFilter(filter);
+                  setExpanded(false);
+                }}
+                className={`px-6 py-2 rounded-full text-sm transition-all duration-300
+                  ${
+                    activeFilter === filter
+                      ? "bg-black text-white shadow-md"
+                      : "border border-black/20 text-black hover:border-black"
+                  }`}
+              >
+                {filter}
+              </button>
             ))}
           </div>
         </div>
 
-        {/* View All Button */}
-        <div className="mt-14 flex justify-center">
-          <button
-            onClick={() => setExpanded(!expanded)}
-            className="view-all-btn flex items-center gap-2 text-sm tracking-widest text-[#384F37]
-                       hover:text-black transition"
+        {/* ---------- GRID ---------- */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={`${activeFilter}-${expanded}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
           >
-            {expanded ? "" : ""}
-            <ChevronDown
-              className={`w-4 h-4 transition-transform duration-300 ${
-                expanded ? "rotate-180" : ""
-              }`}
-            />
-          </button>
-        </div>
+            {visibleItems.map((item, i) => (
+              <CategoryCard key={item.title + i} cat={item} />
+            ))}
+          </motion.div>
+        </AnimatePresence>
+
+        {/* ---------- VIEW ALL ---------- */}
+        {filteredProducts.length > 8 && (
+          <div className="mt-14 flex justify-center">
+            <button
+              onClick={() => setExpanded(!expanded)}
+              className="flex items-center gap-2 text-sm tracking-widest text-[#384F37]
+                         hover:text-black transition"
+            >
+              {expanded ? "SHOW LESS" : "VIEW ALL"}
+              <ChevronDown
+                className={`w-4 h-4 transition-transform duration-300 ${
+                  expanded ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
 }
 
-/* ---------------- CARD COMPONENT ---------------- */
+/* ---------------- CARD ---------------- */
 
 function CategoryCard({ cat }) {
   return (
-    <div
-      className="categ-box group relative rounded-2xl min-h-[260px]
-                 shadow-sm hover:shadow-xl transition-all duration-500"
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 16 }}
+      transition={{ duration: 0.35, ease: "easeOut" }}
+      className="group relative rounded-2xl min-h-[260px] bg-[#f7f7f7]
+                 shadow-sm hover:shadow-xl transition-all duration-500 p-6"
     >
-      {/* Text */}
-      <div className="categ-txt-box relative z-10">
-        <h3 className="text-xl mb-1 text-black">{cat.title.toUpperCase()}</h3>
-        <p className="text-xs text-black/50 mb-15">
+      <div className="relative z-10">
+        <h3 className="text-xl mb-1 text-[#384F37]">
+          {cat.title.toUpperCase()}
+        </h3>
+        <p className="text-xs text-black/50 mb-4">
           {cat.count} PRODUCTS
         </p>
 
@@ -93,18 +139,16 @@ function CategoryCard({ cat }) {
         </button>
       </div>
 
-      {/* Image */}
       <img
         src={cat.img}
         alt={cat.title}
-        className="categ-img absolute bottom-4 right-4 w-[200px] opacity-70
+        className="absolute bottom-4 right-4 w-[200px] opacity-80
                    group-hover:scale-110 group-hover:opacity-100
                    transition-all duration-500"
       />
 
-      {/* Hover ring */}
       <div className="absolute inset-0 rounded-2xl ring-1 ring-black/5
                       group-hover:ring-black/10 transition" />
-    </div>
+    </motion.div>
   );
 }

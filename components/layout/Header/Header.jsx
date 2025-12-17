@@ -101,14 +101,12 @@ export default function Navigation() {
   };
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
+    <motion.nav      
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       onMouseLeave={onLeave}
       className={`fixed py-3 top-0 left-0 right-0 z-50 transition-all ${
         scrolled
-          ? "bg-[#296a53] backdrop-blur-xl border-b border-[#FF7A00]/20"
+          ? "bg-gradient-to-r from-[#3f5b38] to-[#6b8955] backdrop-blur-xl border-b border-[#FF7A00]/20"
           : "bg-transparent"
       }`}
     >
@@ -124,7 +122,13 @@ export default function Navigation() {
                   onMouseEnter={() => onEnter(item)}
                   className="relative"
                 >
-                  <a className="flex items-center gap-1 text-white hover:text-white text-sm tracking-wider cursor-pointer">
+                  <a
+                    className={`flex items-center gap-1 text-sm tracking-wider cursor-pointer
+                      transition-colors duration-300 ease-in-out
+                      ${scrolled ? "text-[#ffe68d]" : "text-white"}
+                    `}
+                  >
+
                     {item.toUpperCase()}
                     {megaMenuData[item] && (
                       <ChevronDown
