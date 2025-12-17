@@ -106,6 +106,12 @@ export default function FantaPage() {
   return (
     <div id="main" className="w-full text-[#3a3027] ">
 
+      {/* <div className="manufacturing-unit">
+          <img id="assembly-unit"
+            src="/Assembly-unit.png"
+            alt="Assembly Unit"></img>
+        </div> */}
+
       {/* SECTION ONE – HERO WITH CHAIR */}
       <section className="section-one relative flex h-screen w-full items-center justify-center">
        
@@ -243,11 +249,7 @@ export default function FantaPage() {
         </div>
       </section>
 
-       <div className="manufacturing-unit">
-          <img id="assembly-unit"
-            src="/Assembly-unit.png"
-            alt="Assembly Unit"></img>
-        </div>
+       
     </div>
   );
 }

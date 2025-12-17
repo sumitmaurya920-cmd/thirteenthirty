@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function ThirteenCarousel() {
   const carouselRef = useRef(null);
@@ -292,15 +292,22 @@ export default function ThirteenCarousel() {
         
       </div>
 
-      <div className="arrows">
-        <button className="prev" aria-label="previous">
-          ‹
+      <div className="arrows flex items-center gap-4">
+        <button
+          className="prev group flex h-12 w-12 items-center justify-center rounded-full border border-[#FF7A00]/40 text-[#FF7A00] transition hover:bg-[#FF7A00] hover:text-white"
+          aria-label="previous"
+        >
+          <ChevronLeft className="h-6 w-6 transition-transform group-hover:-translate-x-0.5" />
         </button>
-        <button className="next" aria-label="next">
-          ›
+
+        <button
+          className="next group flex h-12 w-12 items-center justify-center rounded-full border border-[#FF7A00]/40 text-[#FF7A00] transition hover:bg-[#FF7A00] hover:text-white"
+          aria-label="next"
+        >
+          <ChevronRight className="h-6 w-6 transition-transform group-hover:translate-x-0.5" />
         </button>
-        {/* slide-number is created/updated by JS */}
       </div>
+
 
       {/* <div className="timeRunning" aria-hidden="true" /> */}
     </div>

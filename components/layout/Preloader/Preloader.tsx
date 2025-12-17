@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function Preloader() {
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden bg-black">
+    <div className="fixed inset-0 z-50 overflow-hidden">
       <motion.div
         initial={{ y: 0 }}
         animate={{ y: "-100%" }}
@@ -21,7 +21,7 @@ export default function Preloader() {
         }}
       >
         <Image
-          src="/tt_logo.png"
+          src="/tt_logo_big.png"
           alt="Thirteen Thirty Logo"
           width={200}
           height={200}
