@@ -209,7 +209,7 @@ export default function ThirteenCarousel() {
           className="item"
           style={{
             backgroundImage:
-              "url(/slider3.jpg)",
+              "url(/slider2.webp)",
           }}
         >
           <div className="content">
@@ -226,7 +226,7 @@ export default function ThirteenCarousel() {
           className="item"
           style={{
             backgroundImage:
-              "url(/slider2.jpg)",
+              "url(/slider3.jpg)",
           }}
         >
           <div className="content">
@@ -260,7 +260,7 @@ export default function ThirteenCarousel() {
           className="item"
           style={{
             backgroundImage:
-              "url(/slider3.jpg)",
+              "url(/slider5.jpg)",
           }}
         >
           <div className="content">
@@ -277,7 +277,7 @@ export default function ThirteenCarousel() {
           className="item"
           style={{
             backgroundImage:
-              "url(/slider5.jpg)",
+              "url(/slider6.jpg)",
           }}
         >
           <div className="content">

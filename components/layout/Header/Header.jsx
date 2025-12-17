@@ -108,7 +108,7 @@ export default function Navigation() {
       onMouseLeave={onLeave}
       className={`fixed py-3 top-0 left-0 right-0 z-50 transition-all ${
         scrolled
-          ? "bg-[#000]/60 backdrop-blur-xl border-b border-[#FF7A00]/20"
+          ? "bg-[#296a53] backdrop-blur-xl border-b border-[#FF7A00]/20"
           : "bg-transparent"
       }`}
     >
@@ -124,7 +124,7 @@ export default function Navigation() {
                   onMouseEnter={() => onEnter(item)}
                   className="relative"
                 >
-                  <a className="flex items-center gap-1 text-white/80 hover:text-white text-sm tracking-wider cursor-pointer">
+                  <a className="flex items-center gap-1 text-white hover:text-white text-sm tracking-wider cursor-pointer">
                     {item.toUpperCase()}
                     {megaMenuData[item] && (
                       <ChevronDown
@@ -143,7 +143,7 @@ export default function Navigation() {
               <img
                 src="/tt_logo.png"
                 alt="logo"
-                className="w-[70px]"
+                className="w-[150px]"
               />
             </div>
 
