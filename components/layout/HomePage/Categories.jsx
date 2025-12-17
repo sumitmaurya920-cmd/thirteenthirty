@@ -4,8 +4,8 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
 const categories = [
-  { title: "Chairs", count: 23, img: "/categories/chairs.png" },
-  { title: "Sofa", count: 18, img: "/categories/sofa.png" },
+  { title: "Chairs", count: 23, img: "/categories/chair.png" },
+  { title: "Sofa", count: 18, img: "/categories/sofa-set.png" },
   { title: "Tables", count: 12, img: "/categories/table.png" },
   { title: "Bench", count: 15, img: "/categories/bench.png" },
   { title: "Lounges", count: 30, img: "/categories/LOUNGES.png" },
